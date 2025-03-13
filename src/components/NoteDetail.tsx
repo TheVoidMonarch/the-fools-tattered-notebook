@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
-import { Shield, ZapIcon, Terminal, Check, X } from 'lucide-react';
+import { Shield, ZapIcon, Terminal, Check, X, Sparkles, Scroll } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -26,8 +26,8 @@ const NoteDetail: React.FC<NoteDetailProps> = ({ note }) => {
   const triggerRandomQuiz = () => {
     if (!note.questions || note.questions.length === 0) {
       toast({
-        title: "No questions available",
-        description: "This spell has no associated challenges.",
+        title: "No magical bindings detected",
+        description: "This spell has no associated trials of knowledge.",
       });
       return;
     }
@@ -53,13 +53,13 @@ const NoteDetail: React.FC<NoteDetailProps> = ({ note }) => {
 
     if (correct) {
       toast({
-        title: "Correct incantation!",
-        description: "Your understanding of this arcane knowledge is impressive.",
+        title: "Arcane knowledge absorbed!",
+        description: "The grimoire acknowledges your understanding of this magic.",
       });
     } else {
       toast({
-        title: "Spell fizzled!",
-        description: "Not quite the right pattern. Study further to master this concept.",
+        title: "Magical energy fizzles!",
+        description: "The arcane patterns require further study for mastery.",
       });
     }
   };
@@ -113,7 +113,8 @@ const NoteDetail: React.FC<NoteDetailProps> = ({ note }) => {
                 onClick={triggerRandomQuiz}
                 className="font-patrick text-arcane border-arcane/30 hover:bg-arcane/10"
               >
-                Test Your Knowledge
+                <Sparkles className="mr-1" size={16} />
+                Activate Magical Trial
               </Button>
             </motion.div>
           )}
@@ -123,9 +124,13 @@ const NoteDetail: React.FC<NoteDetailProps> = ({ note }) => {
       <Dialog open={quizOpen} onOpenChange={setQuizOpen}>
         <DialogContent className="bg-parchment-light border-ink/20 max-w-md">
           <DialogHeader>
-            <DialogTitle className="font-fell text-ink text-xl">Knowledge Challenge</DialogTitle>
+            <DialogTitle className="font-fell text-ink text-xl flex items-center gap-2">
+              <Scroll size={18} className="text-arcane" />
+              Arcane Binding Trial
+            </DialogTitle>
             <DialogDescription className="font-patrick text-ink-faded">
-              Prove your understanding of this arcane cybersecurity concept.
+              The grimoire's magic compels you to prove your understanding. 
+              Those who seek knowledge shall be rewarded.
             </DialogDescription>
           </DialogHeader>
 
@@ -170,8 +175,8 @@ const NoteDetail: React.FC<NoteDetailProps> = ({ note }) => {
                 <Alert className="mt-4 bg-parchment-aged border-ink/20">
                   <AlertDescription>
                     {isCorrect 
-                      ? "Correct! You've mastered this arcane knowledge."
-                      : `Not quite right. The correct answer was: ${currentQuestion.correctAnswer}`
+                      ? "The grimoire glows with approval! Your understanding of this magic is acknowledged."
+                      : `The runes flicker with correction. The proper incantation was: ${currentQuestion.correctAnswer}`
                     }
                   </AlertDescription>
                 </Alert>
@@ -184,16 +189,17 @@ const NoteDetail: React.FC<NoteDetailProps> = ({ note }) => {
               <Button 
                 onClick={submitAnswer} 
                 disabled={!selectedAnswer}
-                className="font-patrick"
+                className="font-patrick bg-arcane hover:bg-arcane/90"
               >
-                Submit Answer
+                <Sparkles size={16} className="mr-1" />
+                Cast Response
               </Button>
             ) : (
               <Button 
                 onClick={closeQuiz}
                 className="font-patrick"
               >
-                Close
+                Close Grimoire
               </Button>
             )}
           </DialogFooter>
