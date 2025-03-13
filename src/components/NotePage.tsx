@@ -21,22 +21,22 @@ const NotePage: React.FC<NotePageProps> = ({
 }) => {
   const pageRef = useRef<HTMLDivElement>(null);
   
-  // Place random ink splatters
+  // Place random ink splatters and coffee stains
   useEffect(() => {
-    if (pageRef.current && inkSplatters > 0) {
+    if (pageRef.current) {
       const page = pageRef.current;
       const pageWidth = page.offsetWidth;
       const pageHeight = page.offsetHeight;
       
-      // Clear existing splatters
-      const existingSplatters = page.querySelectorAll('.ink-splatter');
-      existingSplatters.forEach((splatter) => {
-        if (splatter.parentNode === page) {
-          page.removeChild(splatter);
+      // Clear existing elements
+      const existingElements = page.querySelectorAll('.ink-splatter, .coffee-stain');
+      existingElements.forEach((element) => {
+        if (element.parentNode === page) {
+          page.removeChild(element);
         }
       });
       
-      // Add new splatters
+      // Add ink splatters
       for (let i = 0; i < inkSplatters; i++) {
         const splatter = document.createElement('div');
         const variant = Math.floor(Math.random() * 3) + 1 as 1 | 2 | 3;
@@ -59,6 +59,30 @@ const NotePage: React.FC<NotePageProps> = ({
           splatter.classList.add('animate-ink-expand');
         }, 100 + i * 200);
       }
+      
+      // Add coffee stains
+      const coffeeStainCount = Math.floor(Math.random() * 3);
+      for (let i = 0; i < coffeeStainCount; i++) {
+        const stain = document.createElement('div');
+        stain.className = 'coffee-stain';
+        
+        // Random position and rotation
+        const left = Math.random() * (pageWidth - 80);
+        const top = Math.random() * (pageHeight - 80);
+        const rotation = Math.random() * 360;
+        
+        stain.style.left = `${left}px`;
+        stain.style.top = `${top}px`;
+        stain.style.transform = `rotate(${rotation}deg)`;
+        stain.style.opacity = '0';
+        
+        page.appendChild(stain);
+        
+        setTimeout(() => {
+          stain.style.opacity = '0.3';
+          stain.style.transition = 'opacity 1s ease-in';
+        }, 300 + i * 400);
+      }
     }
   }, [inkSplatters]);
   
@@ -67,7 +91,7 @@ const NotePage: React.FC<NotePageProps> = ({
   return (
     <motion.div
       ref={pageRef}
-      className={`notebook-page relative ${isMain ? 'mt-8 mb-12' : 'my-8'}`}
+      className={`notebook-page page-stains relative ${isMain ? 'mt-8 mb-12' : 'my-8'}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
