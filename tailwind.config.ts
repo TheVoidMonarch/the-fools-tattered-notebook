@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,6 +25,22 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				parchment: {
+					light: 'hsl(var(--parchment-light))',
+					default: 'hsl(var(--parchment))',
+					dark: 'hsl(var(--parchment-dark))',
+					aged: 'hsl(var(--parchment-aged))',
+				},
+				ink: {
+					DEFAULT: 'hsl(var(--ink))',
+					faded: 'hsl(var(--ink-faded))',
+					light: 'hsl(var(--ink-light))',
+				},
+				arcane: {
+					DEFAULT: 'hsl(var(--arcane))',
+					light: 'hsl(var(--arcane-light))',
+					dark: 'hsl(var(--arcane-dark))',
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -63,6 +80,11 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			fontFamily: {
+				'fell': ['"IM Fell English"', 'serif'],
+				'patrick': ['"Patrick Hand"', 'cursive'],
+				'shadows': ['"Shadows Into Light"', 'cursive'],
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -84,11 +106,66 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'page-turn': {
+					'0%': { 
+						transform: 'rotateY(0deg)', 
+						opacity: '1' 
+					},
+					'50%': { 
+						transform: 'rotateY(90deg)', 
+						opacity: '0.5' 
+					},
+					'100%': { 
+						transform: 'rotateY(0deg)', 
+						opacity: '1' 
+					}
+				},
+				'fade-in': {
+					'0%': { 
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': { 
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'ink-expand': {
+					'0%': {
+						transform: 'scale(0)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'scale(1)',
+						opacity: '0.7'
+					}
+				},
+				'glow': {
+					'0%, 100%': {
+						filter: 'drop-shadow(0 0 2px hsl(var(--arcane)))'
+					},
+					'50%': {
+						filter: 'drop-shadow(0 0 10px hsl(var(--arcane)))'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'page-turn': 'page-turn 0.5s ease-in-out',
+				'fade-in': 'fade-in 0.5s ease-out forwards',
+				'float': 'float 6s ease-in-out infinite',
+				'ink-expand': 'ink-expand 0.5s ease-out forwards',
+				'glow': 'glow 2s ease-in-out infinite'
 			}
 		}
 	},
