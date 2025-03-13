@@ -4,43 +4,43 @@ import { CyberSecurityNote } from '@/types';
 export const sampleNotes: CyberSecurityNote[] = [
   {
     id: "1",
-    title: "The Art of SQL Injection: A Beginner's Guide",
+    title: "The Bewitchment of SQL: Ancient Art of Database Enchantment",
     date: "Waning Moon, Year of the Phoenix",
     category: "Web Security",
-    content: `<p>Today I've been studying the ancient technique known as SQL Injection. This powerful incantation allows one to manipulate the very foundation of data repositories.</p>
-      <p>The basic structure of this spell involves inserting magical commands where ordinary text is expected:</p>
+    content: `<p>Today I've been studying the ancient bewitchment known as SQL Injection. This powerful form of enchantment allows one to enthrall the guardians of data repositories, bending them to the caster's will.</p>
+      <p>The essence of this bewitchment involves whispering arcane commands where ordinary text is expected:</p>
       <pre>' OR 1=1 --</pre>
-      <p>When cast correctly, this allows a practitioner to bypass the guardians of authentication, revealing secrets not meant for untrained eyes.</p>
-      <p>I've discovered that proper defense against such incantations involves:</p>
+      <p>When the enchantment is properly woven, it causes the guardian spirits to reveal all secrets in their keeping, granting access to realms and treasures meant only for the initiated.</p>
+      <p>I've discovered several protective wards against such bewitchments:</p>
       <ul>
-        <li>Parameterized queries (binding the magical energies)</li>
-        <li>Input validation (checking for corrupted magical symbols)</li>
-        <li>Least privilege principles (limiting the power of the conjuration)</li>
+        <li>Parameterized queries (binding the bewitching energies with arcane sigils)</li>
+        <li>Input validation (detecting corrupted magical symbols before they take effect)</li>
+        <li>Least privilege principles (ensuring guardians only control the specific chambers they must protect)</li>
       </ul>
-      <p>Tomorrow I shall attempt to master more advanced variations of this technique.</p>`,
-    tags: ["sql-injection", "web-security", "authentication-bypass", "beginner"],
+      <p>On the next full moon, I shall attempt to master more potent variations of this bewitchment.</p>`,
+    tags: ["sql-bewitchment", "database-enchantment", "guardian-bypass", "arcane-injection"],
     questions: [
       {
         id: "q1",
-        question: "What is the primary purpose of the comment symbols (--) in an SQL injection attack?",
+        question: "What is the purpose of the mystical symbols (--) in an SQL bewitchment incantation?",
         options: [
-          "To make the code more readable",
-          "To comment out the rest of the SQL query",
-          "To inject malicious JavaScript",
-          "To encrypt the injected code"
+          "To make the enchantment more visually appealing",
+          "To sever the remainder of the guardian's questioning",
+          "To inject malevolent spirit scripts",
+          "To encrypt the bewitching code from detection"
         ],
-        correctAnswer: "To comment out the rest of the SQL query"
+        correctAnswer: "To sever the remainder of the guardian's questioning"
       },
       {
         id: "q2",
-        question: "Which of the following is the best defense against SQL injection attacks?",
+        question: "Which of these protective wards offers the strongest defense against SQL bewitchments?",
         options: [
-          "Using client-side validation only",
-          "Hiding database error messages",
-          "Using parameterized queries",
-          "Renaming database tables"
+          "Using illusionary validation on the client side only",
+          "Concealing error messages from the guardian spirits",
+          "Binding parameters with sacred sigils (parameterized queries)",
+          "Renaming the chambers of data with obscure titles"
         ],
-        correctAnswer: "Using parameterized queries"
+        correctAnswer: "Binding parameters with sacred sigils (parameterized queries)"
       }
     ]
   },
@@ -91,3 +91,4 @@ export const sampleNotes: CyberSecurityNote[] = [
     ]
   }
 ];
+
