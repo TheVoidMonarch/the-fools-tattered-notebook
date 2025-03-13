@@ -26,8 +26,8 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				parchment: {
+					DEFAULT: 'hsl(var(--parchment))',
 					light: 'hsl(var(--parchment-light))',
-					default: 'hsl(var(--parchment))',
 					dark: 'hsl(var(--parchment-dark))',
 					aged: 'hsl(var(--parchment-aged))',
 				},
