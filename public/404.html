@@ -2,38 +2,119 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>The Fool's Tattered Notebook</title>
-  <script type="text/javascript">
-    // Single Page Apps for GitHub Pages
-    // MIT License
-    // https://github.com/rafgraph/spa-github-pages
-    // This script takes the current url and converts the path and query
-    // string into just a query string, and then redirects the browser
-    // to the new url with only a query string and hash fragment,
-    // e.g. https://www.foo.tld/one/two?a=b&c=d#qwe, becomes
-    // https://www.foo.tld/?/one/two&a=b~and~c=d#qwe
-    // Note: this 404.html file must be at least 512 bytes for it to work
-    // with Internet Explorer (it is currently > 512 bytes)
+  <title>You've teleported to the wrong neighborhood, Wizard!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #FAF3E0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #4A4A4A;
+    }
+    .container {
+      max-width: 500px;
+      text-align: center;
+      background-color: #FFF8E8;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #8B5CF6;
+    }
+    .image-container {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      margin: 0 auto 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      padding: 1rem;
+    }
+    .image-text {
+      color: white;
+      font-size: 1.2rem;
+      margin: 0;
+      text-align: center;
+    }
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+    .redirect-text {
+      font-size: 0.9rem;
+      color: #6B7280;
+      margin-bottom: 1.5rem;
+    }
+    .button {
+      display: inline-block;
+      background-color: #8B5CF6;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    .button:hover {
+      background-color: #7C3AED;
+    }
+    #countdown {
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    // Redirect to the correct homepage after 5 seconds
+    let secondsLeft = 5;
 
-    // If you're creating a Project Pages site and NOT using a custom domain,
-    // then set pathSegmentsToKeep to 1 (enterprise users may need to set it to > 1).
-    // This way the code will only replace the route part of the path, and not
-    // the real directory in which the app resides, for example:
-    // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
-    // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
-    // Otherwise, leave pathSegmentsToKeep as 0.
-    var pathSegmentsToKeep = 1;
+    window.onload = function() {
+      const countdownElement = document.getElementById('countdown');
 
-    var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      l.hash
-    );
+      const countdownInterval = setInterval(function() {
+        secondsLeft--;
+        countdownElement.textContent = secondsLeft;
+
+        if (secondsLeft <= 0) {
+          clearInterval(countdownInterval);
+          window.location.href = 'https://thevoidmonarch.github.io/the-fools-tattered-notebook/';
+        }
+      }, 1000);
+    };
   </script>
 </head>
 <body>
+  <div class="container">
+    <h1>404</h1>
+    <div class="image-container">
+      <img src="https://i.imgur.com/JXgwTEs.png" alt="Cute demons" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNGQUYzRTAiLz48cGF0aCBkPSJNODAgODBDODAgNjguOTU0MyA4OC45NTQzIDYwIDEwMCA2MEMxMTEuMDQ2IDYwIDEyMCA2OC45NTQzIDEyMCA4MEMxMjAgOTEuMDQ1NyAxMTEuMDQ2IDEwMCAxMDAgMTAwQzg4Ljk1NDMgMTAwIDgwIDkxLjA0NTcgODAgODBaIiBmaWxsPSIjRkY2QjZCIi8+PHBhdGggZD0iTTY1IDEyMEM2NSAxMDguOTU0IDc0LjQwMTUgMTAwIDg2IDEwMEg5NkMxMDcuNTk4IDEwMCAxMTcgMTA4Ljk1NCAxMTcgMTIwQzExNyAxMzEuMDQ2IDEwNy41OTggMTQwIDk2IDE0MEg4NkM3NC40MDE1IDE0MCA2NSAxMzEuMDQ2IDY1IDEyMFoiIGZpbGw9IiNGRjZCNkIiLz48cGF0aCBkPSJNMTMwIDEyMEMxMzAgMTA4Ljk1NCAxMzkuNDAyIDEwMCAxNTEgMTAwSDE2MUMxNzIuNTk4IDEwMCAxODIgMTA4Ljk1NCAxODIgMTIwQzE4MiAxMzEuMDQ2IDE3Mi41OTggMTQwIDE2MSAxNDBIMTUxQzEzOS40MDIgMTQwIDEzMCAxMzEuMDQ2IDEzMCAxMjBaIiBmaWxsPSIjRkY2QjZCIi8+PHBhdGggZD0iTTQwIDEyMEM0MCAxMDguOTU0IDQ5LjQwMTUgMTAwIDYxIDEwMEg3MUM4Mi41OTg1IDEwMCA5MiAxMDguOTU0IDkyIDEyMEM5MiAxMzEuMDQ2IDgyLjU5ODUgMTQwIDcxIDE0MEg2MUM0OS40MDE1IDE0MCA0MCAxMzEuMDQ2IDQwIDEyMFoiIGZpbGw9IiNGRjZCNkIiLz48cGF0aCBkPSJNMTAwIDEyMEMxMDAgMTA4Ljk1NCAxMDguOTU0IDEwMCAxMjAgMTAwQzEzMS4wNDYgMTAwIDE0MCAxMDguOTU0IDE0MCAxMjBDMTQwIDEzMS4wNDYgMTMxLjA0NiAxNDAgMTIwIDE0MEMxMDguOTU0IDE0MCAxMDAgMTMxLjA0NiAxMDAgMTIwWiIgZmlsbD0iI0ZGNkI2QiIvPjxwYXRoIGQ9Ik04NSA4NUM4NSA4My4zNDMxIDg2LjM0MzEgODIgODggODJDODkuNjU2OSA4MiA5MSA4My4zNDMxIDkxIDg1Qzg1IDg1IDg1IDg5LjY1NjkgODUgODhaIiBmaWxsPSJibGFjayIvPjxwYXRoIGQ9Ik0xMTAgODVDMTEwIDgzLjM0MzEgMTExLjM0MyA4MiAxMTMgODJDMTE0LjY1NyA4MiAxMTYgODMuMzQzMSAxMTYgODVDMTEwIDg1IDExMCA4OS42NTY5IDExMCA4OFoiIGZpbGw9ImJsYWNrIi8+PHBhdGggZD0iTTkwIDk1QzkwIDkzLjM0MzEgOTEuMzQzMSA5MiA5MyA5Mkg5OEMxMDIgOTIgMTA3IDkyIDExMCA5NUMxMTAgOTYuNjU2OSAxMDguNjU3IDk4IDEwNyA5OEg5M0M5MS4zNDMxIDk4IDkwIDk2LjY1NjkgOTAgOTVaIiBmaWxsPSJibGFjayIvPjwvc3ZnPg=='">
+      <div class="image-overlay">
+        <p class="image-text">You've teleported to the wrong neighborhood, Wizard!</p>
+      </div>
+    </div>
+    <p>This magical page doesn't exist in this realm!</p>
+    <p class="redirect-text">The arcane forces are redirecting you to the grimoire's main page in <span id="countdown">5</span> seconds...</p>
+    <a href="https://thevoidmonarch.github.io/the-fools-tattered-notebook/" class="button">Return to the Sanctuary Now</a>
+  </div>
 </body>
 </html>

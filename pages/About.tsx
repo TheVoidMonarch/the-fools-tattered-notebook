@@ -28,9 +28,31 @@ const About: React.FC = () => {
                 transition={{ duration: 0.5 }}
                 className="relative"
               >
-                <div className="w-32 h-32 bg-arcane/10 rounded-full flex items-center justify-center">
-                  <Wand className="h-12 w-12 text-arcane animate-glow" />
-                </div>
+                <motion.div
+                  className="w-32 h-32 bg-arcane/10 rounded-full flex items-center justify-center overflow-hidden border-2 border-arcane/30"
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 8px rgba(139, 92, 246, 0.5)" }}
+                  animate={{
+                    boxShadow: ["0 0 0px rgba(139, 92, 246, 0.3)", "0 0 10px rgba(139, 92, 246, 0.6)", "0 0 0px rgba(139, 92, 246, 0.3)"]
+                  }}
+                  transition={{
+                    boxShadow: {
+                      repeat: Infinity,
+                      duration: 2
+                    }
+                  }}
+                >
+                  <motion.img
+                    src="./the-fool.png"
+                    alt="The Fool"
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                    onError={(e) => {
+                      // Fallback to a colorful SVG if image fails to load
+                      e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyOCIgaGVpZ2h0PSIxMjgiIHJ4PSI2NCIgZmlsbD0iI0YyRTlEOSIvPjxwYXRoIGQ9Ik02NCA0MEw4NCA1Nkg0NFoiIGZpbGw9IiM4QjVDRjYiLz48Y2lyY2xlIGN4PSI2NCIgY3k9IjcyIiByPSIxNiIgZmlsbD0iIzhCNUNGNiIvPjxwYXRoIGQ9Ik01MiA4OEg3NkM3NiA5Ni44MzY2IDY4LjgzNjYgMTA0IDYwIDEwNEg1MkM1MiA5NS4xNjM0IDU5LjE2MzQgODggNjggODhaIiBmaWxsPSIjOEI1Q0Y2Ii8+PGNpcmNsZSBjeD0iNTIiIGN5PSI2MCIgcj0iNCIgZmlsbD0iIzQ5MzI4MiIvPjxjaXJjbGUgY3g9Ijc2IiBjeT0iNjAiIHI9IjQiIGZpbGw9IiM0OTMyODIiLz48L3N2Zz4=';
+                    }}
+                  />
+                </motion.div>
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-parchment-light rounded-full flex items-center justify-center shadow-md">
                   <Star className="h-5 w-5 text-arcane" />
                 </div>
