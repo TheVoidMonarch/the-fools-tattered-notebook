@@ -1,0 +1,59 @@
+<style>
+    /* ... existing styles ... */
+    
+    .post-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+    }
+    
+    .delete-btn {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    
+    .delete-btn:hover {
+        background-color: #c82333;
+    }
+</style>
+
+<!-- ... existing HTML ... -->
+
+<script>
+    // ... existing code ...
+
+    async function deletePost(postId) {
+        if (!confirm('Are you sure you want to delete this post? This action cannot be undone.')) {
+            return;
+        }
+
+        try {
+            await window.electron.invoke('delete-post', postId);
+            await loadPosts(); // Refresh the posts list
+        } catch (error) {
+            alert('Error deleting post: ' + error.message);
+        }
+    }
+
+    function createPostElement(post) {
+        const postElement = document.createElement('div');
+        postElement.className = 'post-item';
+        postElement.innerHTML = `
+            <h3>${post.title}</h3>
+            <p>${post.date}</p>
+            <p>${post.category}</p>
+            <div class="post-actions">
+                <button onclick="editPost('${post.id}')" class="edit-btn">Edit</button>
+                <button onclick="deletePost('${post.id}')" class="delete-btn">Delete</button>
+            </div>
+        `;
+        return postElement;
+    }
+
+    // ... rest of the existing code ...
+</script> 

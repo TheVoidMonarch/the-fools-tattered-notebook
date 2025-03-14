@@ -42,14 +42,22 @@ const About: React.FC = () => {
                   }}
                 >
                   <motion.img
-                    src="./the-fool.png"
+                    src={`${window.location.pathname.includes('the-fools-tattered-notebook') ? '/the-fools-tattered-notebook' : ''}/the-fool.png`}
                     alt="The Fool"
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                     onError={(e) => {
-                      // Fallback to a colorful SVG if image fails to load
-                      e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyOCIgaGVpZ2h0PSIxMjgiIHJ4PSI2NCIgZmlsbD0iI0YyRTlEOSIvPjxwYXRoIGQ9Ik02NCA0MEw4NCA1Nkg0NFoiIGZpbGw9IiM4QjVDRjYiLz48Y2lyY2xlIGN4PSI2NCIgY3k9IjcyIiByPSIxNiIgZmlsbD0iIzhCNUNGNiIvPjxwYXRoIGQ9Ik01MiA4OEg3NkM3NiA5Ni44MzY2IDY4LjgzNjYgMTA0IDYwIDEwNEg1MkM1MiA5NS4xNjM0IDU5LjE2MzQgODggNjggODhaIiBmaWxsPSIjOEI1Q0Y2Ii8+PGNpcmNsZSBjeD0iNTIiIGN5PSI2MCIgcj0iNCIgZmlsbD0iIzQ5MzI4MiIvPjxjaXJjbGUgY3g9Ijc2IiBjeT0iNjAiIHI9IjQiIGZpbGw9IiM0OTMyODIiLz48L3N2Zz4=';
+                      // Try to load SVG if PNG fails
+                      const basePath = window.location.pathname.includes('the-fools-tattered-notebook') ? '/the-fools-tattered-notebook' : '';
+                      e.currentTarget.src = `${basePath}/the-fool.svg`;
+
+                      // Add another error handler for the SVG fallback
+                      e.currentTarget.onerror = () => {
+                        // Fallback to a colorful SVG if image fails to load
+                        e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyOCIgaGVpZ2h0PSIxMjgiIHJ4PSI2NCIgZmlsbD0iI0YyRTlEOSIvPjxwYXRoIGQ9Ik02NCA0MEw4NCA1Nkg0NFoiIGZpbGw9IiM4QjVDRjYiLz48Y2lyY2xlIGN4PSI2NCIgY3k9IjcyIiByPSIxNiIgZmlsbD0iIzhCNUNGNiIvPjxwYXRoIGQ9Ik01MiA4OEg3NkM3NiA5Ni44MzY2IDY4LjgzNjYgMTA0IDYwIDEwNEg1MkM1MiA5NS4xNjM0IDU5LjE2MzQgODggNjggODhaIiBmaWxsPSIjOEI1Q0Y2Ii8+PGNpcmNsZSBjeD0iNTIiIGN5PSI2MCIgcj0iNCIgZmlsbD0iIzQ5MzI4MiIvPjxjaXJjbGUgY3g9Ijc2IiBjeT0iNjAiIHI9IjQiIGZpbGw9IiM0OTMyODIiLz48L3N2Zz4=';
+                        e.currentTarget.onerror = null; // Prevent infinite error loop
+                      };
                     }}
                   />
                 </motion.div>

@@ -1,0 +1,18 @@
+{
+  "name": "fools-notebook-admin",
+  "version": "1.0.0",
+  "description": "Admin interface for Fool's Notebook",
+  "main": "admin/gui/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "electron": "^29.1.0",
+    "marked": "^12.0.0",
+    "node-fetch": "^2.7.0"
+  }
+} 

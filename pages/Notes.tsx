@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Scroll, Search, Shield } from 'lucide-react';
@@ -10,17 +9,27 @@ import { sampleNotes } from '../data/sampleNotes';
 import { Dialog, DialogContent } from "../components/ui/dialog";
 import NoteDetail from '../components/NoteDetail';
 import { CyberSecurityNote } from '../types';
+import CreatePost from '../components/CreatePost';
 
 const Notes: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedNote, setSelectedNote] = useState<CyberSecurityNote | null>(null);
+  const [notes, setNotes] = useState<CyberSecurityNote[]>(sampleNotes);
 
   // Filter notes based on search term
-  const filteredNotes = sampleNotes.filter(note => 
+  const filteredNotes = notes.filter(note => 
     note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     note.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
     note.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+
+  const handlePostCreate = (newPost: Omit<CyberSecurityNote, 'id'>) => {
+    const post: CyberSecurityNote = {
+      ...newPost,
+      id: Date.now().toString(), // Simple way to generate unique IDs
+    };
+    setNotes(prevNotes => [post, ...prevNotes]);
+  };
 
   return (
     <PageTransition>
@@ -29,9 +38,12 @@ const Notes: React.FC = () => {
         
         <main className="flex-1 max-w-6xl w-full mx-auto px-4 pb-12">
           <div className="my-8">
-            <div className="flex items-center gap-3 mb-8">
-              <Shield className="h-6 w-6 text-arcane" />
-              <h1 className="text-3xl font-fell font-bold text-ink">Digital Security Grimoire</h1>
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <Shield className="h-6 w-6 text-arcane" />
+                <h1 className="text-3xl font-fell font-bold text-ink">Digital Security Grimoire</h1>
+              </div>
+              <CreatePost onPostCreate={handlePostCreate} />
             </div>
             
             {/* Search bar */}
