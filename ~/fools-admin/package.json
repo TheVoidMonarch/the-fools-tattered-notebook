@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "electron": "^29.1.0",
+    "electron": "^33.4.6",
     "marked": "^12.0.0",
     "node-fetch": "^2.7.0"
   }
